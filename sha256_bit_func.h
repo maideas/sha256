@@ -12,8 +12,8 @@ uint32_t add2(uint32_t x, uint32_t y);
 uint32_t add4(uint32_t x, uint32_t y, uint32_t z, uint32_t u);
 uint32_t add5(uint32_t x, uint32_t y, uint32_t z, uint32_t u, uint32_t v);
 
-uint32_t shr (uint32_t x, int n);
-uint32_t rotr(uint32_t x, int n);
+uint32_t shr (uint32_t x, unsigned int n);
+uint32_t rotr(uint32_t x, unsigned int n);
 
 uint32_t ch  (uint32_t x, uint32_t y, uint32_t z);
 uint32_t maj (uint32_t x, uint32_t y, uint32_t z);

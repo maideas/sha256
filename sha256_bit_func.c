@@ -29,11 +29,11 @@ uint32_t add5(uint32_t x, uint32_t y, uint32_t z, uint32_t u, uint32_t v) {
   return (uint32_t)(x + y + z + u + v);  // (x + y + z + u + v) mod 2^32
 }
 
-uint32_t shr(uint32_t x, int n) {
+uint32_t shr(uint32_t x, unsigned int n) {
   return x >> n;
 }
 
-uint32_t rotr(uint32_t x, int n) {
+uint32_t rotr(uint32_t x, unsigned int n) {
   return (x >> n) | (x << (32 - n));
 }
 
