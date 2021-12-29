@@ -3,7 +3,7 @@
 * [FIPS PUB 180-4 Secure Hash Standard](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
 * [SHA-256 Reference Examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf)
 
-make compare
+## make compare
 
 ```
 # -----------------------------------------
