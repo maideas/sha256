@@ -62,10 +62,7 @@ uint32_t small_sigma_1(uint32_t x) {
 }
 
 uint32_t swap_endianess(uint32_t x) {
-
-  uint32_t y;
-
-  y = 0;
+  uint32_t y = 0;
   y += (x & 0x000000FFU) << 24;
   y += (x & 0x0000FF00U) <<  8;
   y += (x & 0x00FF0000U) >>  8;
