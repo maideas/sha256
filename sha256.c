@@ -54,7 +54,11 @@ static void get_data_block(data_t *data) {
   }
 }
 
-static void init_hash(data_t *data) {
+static void init(data_t *data) {
+
+  data->num_bits = 0;
+  data->one_flag = 0;
+  data->last_block = 0;
 
   // initialize hash value with consts
   data->H[0] = 0x6a09e667;
@@ -94,7 +98,7 @@ static void hash_data_block(data_t *data) {
   g = data->H[6];
   h = data->H[7];
 
-  // loop over all W values
+  // loop over all W32 values
   for (int t = 0; t < 64; t++) {
     T1 = add5(h, large_sigma_1(e), ch(e, f, g), K[t], data->w_u.W32[t]);
     T2 = add2(large_sigma_0(a), maj(a, b, c));
@@ -111,7 +115,7 @@ static void hash_data_block(data_t *data) {
   }
   printf("\n");
 
-  // compute intermediate hash value
+  // compute intermediate hash
   data->H[0] = add2(a, data->H[0]);
   data->H[1] = add2(b, data->H[1]);
   data->H[2] = add2(c, data->H[2]);
@@ -124,13 +128,7 @@ static void hash_data_block(data_t *data) {
 
 void sha256(data_t *data) {
 
-  data->num_bits = 0;
-  data->last_block = 0;
-  data->one_flag = 0;
-
-  printS(data->s);
-
-  init_hash(data);
+  init(data);
 
   do {
     get_data_block(data);
