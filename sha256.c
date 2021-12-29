@@ -15,6 +15,23 @@ static const uint32_t K[64] = {
   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
+static void init(data_t *data) {
+
+  data->num_bits = 0;
+  data->one_flag = 0;
+  data->last_block = 0;
+
+  // initialize hash value with consts
+  data->H[0] = 0x6a09e667;
+  data->H[1] = 0xbb67ae85;
+  data->H[2] = 0x3c6ef372;
+  data->H[3] = 0xa54ff53a;
+  data->H[4] = 0x510e527f;
+  data->H[5] = 0x9b05688c;
+  data->H[6] = 0x1f83d9ab;
+  data->H[7] = 0x5be0cd19;
+}
+
 static void get_data_block(data_t *data) {
 
   int n;
@@ -52,23 +69,6 @@ static void get_data_block(data_t *data) {
     data->w_u.W32[15] = (uint32_t)((data->num_bits >>  0) & 0xFFFFFFFFU);
     data->last_block = 1;
   }
-}
-
-static void init(data_t *data) {
-
-  data->num_bits = 0;
-  data->one_flag = 0;
-  data->last_block = 0;
-
-  // initialize hash value with consts
-  data->H[0] = 0x6a09e667;
-  data->H[1] = 0xbb67ae85;
-  data->H[2] = 0x3c6ef372;
-  data->H[3] = 0xa54ff53a;
-  data->H[4] = 0x510e527f;
-  data->H[5] = 0x9b05688c;
-  data->H[6] = 0x1f83d9ab;
-  data->H[7] = 0x5be0cd19;
 }
 
 static void hash_data_block(data_t *data) {
