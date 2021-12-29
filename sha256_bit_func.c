@@ -1,12 +1,12 @@
 
 #include "sha256_bit_func.h"
 
-uint32_t and(uint32_t x, uint32_t y) {
-  return x & y;
+uint32_t inv(uint32_t x) {
+  return ~x;
 }
 
-uint32_t or(uint32_t x, uint32_t y) {
-  return x | y;
+uint32_t and(uint32_t x, uint32_t y) {
+  return x & y;
 }
 
 uint32_t xor2(uint32_t x, uint32_t y) {
@@ -15,10 +15,6 @@ uint32_t xor2(uint32_t x, uint32_t y) {
 
 uint32_t xor3(uint32_t x, uint32_t y, uint32_t z) {
   return x ^ y ^ z;
-}
-
-uint32_t not(uint32_t x) {
-  return ~x;
 }
 
 uint32_t add2(uint32_t x, uint32_t y) {
@@ -33,16 +29,8 @@ uint32_t add5(uint32_t x, uint32_t y, uint32_t z, uint32_t u, uint32_t v) {
   return (uint32_t)(x + y + z + u + v);  // (x + y + z + u + v) mod 2^32
 }
 
-uint32_t shl(uint32_t x, int n) {
-  return x << n;
-}
-
 uint32_t shr(uint32_t x, int n) {
   return x >> n;
-}
-
-uint32_t rotl(uint32_t x, int n) {
-  return (x << n) | (x >> (32 - n));
 }
 
 uint32_t rotr(uint32_t x, int n) {
@@ -50,7 +38,7 @@ uint32_t rotr(uint32_t x, int n) {
 }
 
 uint32_t ch(uint32_t x, uint32_t y, uint32_t z) {
-  return xor2(and(x, y), and(not(x), z));
+  return xor2(and(x, y), and(inv(x), z));
 }
 
 uint32_t maj(uint32_t x, uint32_t y, uint32_t z) {
