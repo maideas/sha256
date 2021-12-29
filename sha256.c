@@ -34,15 +34,14 @@ static void init(data_t *data) {
 
 static void get_data_block(data_t *data) {
 
-  int n;
+  int n = 0;
 
   // zero complete W
-  for (n = 0; n < 64; n++) {
-    data->w_u.W32[n] = 0;
+  for (int t = 0; t < 64; t++) {
+    data->w_u.W32[t] = 0;
   }
 
   // copy input data into W
-  n = 0;
   while ((n < 64) && (*(data->s) != '\0')) {
     data->w_u.W8[n++] = *(data->s);
     data->s++;
@@ -59,8 +58,8 @@ static void get_data_block(data_t *data) {
   }
 
   // convert W32 to big-endian (including single "1")
-  for (int k = 0; k < 16; k++) {
-    data->w_u.W32[k] = swap_endianess(data->w_u.W32[k]);
+  for (int t = 0; t < 16; t++) {
+    data->w_u.W32[t] = swap_endianess(data->w_u.W32[t]);
   }
 
   if (n < 56) {
