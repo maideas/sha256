@@ -41,7 +41,7 @@ static void get_data_block(data_t *data) {
     data->w_u.W32[t] = 0;
   }
 
-  // copy input data into W
+  // copy a chunk of input data into W
   while ((n < 64) && (*(data->s) != '\0')) {
     data->w_u.W8[n++] = *(data->s);
     data->s++;
@@ -62,8 +62,8 @@ static void get_data_block(data_t *data) {
     data->w_u.W32[t] = swap_endianess(data->w_u.W32[t]);
   }
 
+  // insert number of input data bits at the end of W
   if (n < 56) {
-    // insert number of input data bits at the end of W
     data->w_u.W32[14] = (uint32_t)((data->num_bits >> 32) & 0xFFFFFFFFU);
     data->w_u.W32[15] = (uint32_t)((data->num_bits >>  0) & 0xFFFFFFFFU);
     data->last_block = 1;
