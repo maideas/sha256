@@ -10,7 +10,7 @@ all: build
 	./main
 
 build: clean
-	gcc -Wall -I. -o main $(C_FILES)
+	gcc -std=c99 -Wall -I. -o main $(C_FILES)
 
 clean:
 	-rm -f main
