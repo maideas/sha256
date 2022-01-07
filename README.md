@@ -36,3 +36,8 @@ digest: 0xE07F00C1 0xD434C9DC 0x0274407D 0x0D3F2665 0x1E64145E 0x2FFB0782 0x4601
 digest: 0xB370B7FD 0xFADAFA7D 0x8ADFA8D9 0x73AFA4E8 0x2F4574C0 0x534A6312 0x8CA2E1D2 0xA07C49FA 
 ```
 
+# HMAC Implementation
+
+* [FIPS PUB 198-1 The Keyed-Hash Message Authentication Code](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf)
+* [MAC-SHA-256 Reference Examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/HMAC_SHA256.pdf)
+
